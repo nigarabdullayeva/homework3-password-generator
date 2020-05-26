@@ -29,47 +29,49 @@ generateBtn.addEventListener("click", writePassword);
 // create variables 
 
 function writePassword() {
-   var numbers = confirm("Do you want to use numbers in the password?");
-   var lowerCase = confirm("Do you want to use lower case characters in the password?");
-   var upperCase = confirm("Do you want to use upper case characters in the password?");
-   var specChar = confirm("Do you want to use special characters in the password?");
+   var putNumbers = confirm("Do you want to use numbers in the password?");
+   var putLowerCase = confirm("Do you want to use lower case characters in the password?");
+   var putUpperCase = confirm("Do you want to use upper case characters in the password?");
+   var putSpecChar = confirm("Do you want to use special characters in the password?");
    var passLength = prompt("How many charachers whould you like to use in your password? Enter number from 8 to 128.");
    var password = []
 
-   console.log (password)
     
    //creating criterias for user choice and writing conditions 
 
    while((password.length) < passLength) {
 
-    if ( numbers === true) {
+    if ( putNumbers === true) {
     password.push(Math.floor(Math.random() * 10));
     }
-    if (lowerCase === true) {
+    if (putLowerCase === true) {
     password.push(lowerCase[Math.floor(Math.random() * lowerCase.length)]);
     }
-    if (upperCase === true) {
+    if (putUpperCase === true) {
     password.push(upperCase[Math.floor(Math.random() * upperCase.length)]);
     }
-    if (specChar === true) {
+    if (putSpecChar === true) {
     password.push(specChar[Math.floor(Math.random() * specChar.length)]);
     }
-    if (numbers === false && lowerCase == false && upperCase == false && specChar == false) {
+    if (putNumbers === false && putLowerCase == false && putUpperCase == false && putSpecChar == false) {
        return alert ("You have to select at least one criteria");
     }
     if ((passLength < 8) || (passLength > 128)) {
         return alert("Password must contain from 8 to 128 characters!!! Please select correct number!");
      }
+     
+     // making randomly order of criterias 
 
-      password.sort(compareRandom);
-       function compareRandom(a,b) {
-         return (Math.random() -0.5);
-      }
+     password.sort(compareRandom);
+     function compareRandom(a,b) {
+       return (Math.random() -0.5);
+    }
    }
-
-    
+     
+   // display password in textarea 
 
     document.getElementById ("password").innerHTML = password
 }
+
 
   
